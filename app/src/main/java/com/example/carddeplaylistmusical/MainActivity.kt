@@ -1,8 +1,11 @@
 package com.example.carddeplaylistmusical
 
+import android.content.res.ColorStateList
 import android.os.Bundle
+import android.text.style.LineHeightSpan.WithDensity
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 
 import androidx.compose.foundation.layout.Arrangement
@@ -20,11 +23,15 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.List
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Shapes
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -70,7 +77,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         {
             Surface( modifier = Modifier
                 .width(400.dp)
-                .height(360.dp)
+                .height(400.dp)
                 .shadow(elevation = 12.dp)
                 .padding(24.dp)  ,
                      color = Color(0xFF1E1E1E),
@@ -113,6 +120,17 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                         textAlign = TextAlign.Center,
                         modifier = Modifier.padding(top = 24.dp)
                     )
+                    Button(onClick = { /*TODO*/ }, modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 24.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF1DB954),
+
+                        )
+                    ) {
+                        Text(text = "OUVIR AGORA")
+
+                    }
                 }
 
         }
