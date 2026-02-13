@@ -1,7 +1,10 @@
 package com.example.carddeplaylistmusical
 
 import android.content.res.ColorStateList
+import androidx.compose.runtime.*
 import android.os.Bundle
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import android.text.style.LineHeightSpan.WithDensity
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -33,6 +36,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -77,7 +81,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         {
             Surface( modifier = Modifier
                 .width(400.dp)
-                .height(400.dp)
+                .height(430.dp)
                 .shadow(elevation = 12.dp)
                 .padding(24.dp)  ,
                      color = Color(0xFF1E1E1E),
@@ -118,14 +122,40 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                         fontSize = (14.sp),
                         color = Color.Gray,
                         textAlign = TextAlign.Center,
-                        modifier = Modifier.padding(top = 24.dp)
+                        modifier = Modifier.padding(top = 24.dp, bottom = 10.dp)
                     )
-                    Button(onClick = { /*TODO*/ }, modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 24.dp),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF1DB954),
+                    Row(
+                        Modifier.fillMaxWidth(),
+                        Arrangement.SpaceBetween
+                    ) {
+                        Text(text = "❤️ 120k",color = Color.White)
+                        Surface(
+                            modifier = Modifier
+                                .width(150.dp)
+                                .height(20.dp)
+                                .padding(top = 15.dp)       ,
+                            color = Color.Black
+                        ) {
+                            Surface(modifier = Modifier
+                                .width(10.dp)
+                                .height(20.dp)
+                                .padding(end = 40.dp)       ,
+                                color = Color(0xFF1DB954)) {
 
+                            }
+
+                        }
+                    }
+                    var clicado by remember { mutableStateOf(false) }
+                    Button(
+                        onClick = {
+                            clicado = !clicado
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 24.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = if (clicado) Color.Red else Color(0xFF1DB954)
                         )
                     ) {
                         Text(text = "OUVIR AGORA")
